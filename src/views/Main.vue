@@ -1,6 +1,6 @@
 <template>
-    <div class="about" style="padding-top:120px;">
-      <h1>This is Main</h1>
+    <div class="about" style="">
+      <h1 v-for="item of 40">This is Main {{ item }}</h1>
     </div>
   </template>
 
@@ -9,6 +9,17 @@
     name: 'Main',
     props: {
       msg: String
+    },
+    data(){
+      return {
+        dataArr:Array,
+      }
+    },
+    mounted(){
+      
+    },
+    methods: {
+
     }
   }
   </script>
