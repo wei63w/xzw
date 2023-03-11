@@ -1,6 +1,7 @@
 <template>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: #9e1f21;">
+      <div class="container-xl">
         <div class="topdiv">
           <div class="tdleft">
             <span style="font-size: 14px;">传承工匠精神   筑造一流企业</span>
@@ -40,11 +41,13 @@
             </div>
           </div>
         </div>
+      </div>
+        
     </div>
 
     <!-- fixed-top -->
     <nav  class="navbar navbar-light bg-light  navbar-expand-lg" v-bind:class="{'fixed-top':isNeedFixed}" style="padding:0px;">
-      <div class="container-fluid">
+      <div class="container-xl">
         <a class="navbar-brand" href="#">
           <div class="my-header-img-parent">
             <img class="my-header-img" src="@/assets/bj_logo.png" alt="">
@@ -86,17 +89,43 @@
 
     </nav>
 
-    <div class="container-fluid " :style="{'marginTop':isNeedFixed ? '110px' : '0px',color:true?'red':'blue',fontSize:true ? '10px' : '5px'}">
+    <!-- <div class="container-fluid " :style="{'marginTop':isNeedFixed ? '110px' : '0px',color:true?'red':'blue',fontSize:true ? '10px' : '5px'}">
       <div class="row bannerParent">
         <img src="@/assets/banner.jpg" alt="">
       </div>
-      
+    </div> -->
+
+    <div class="container-fluid" :style="{'marginTop':isNeedFixed ? '110px' : '0px',color:true?'red':'blue',fontSize:true ? '10px' : '5px'}">
+      <div id="myCarousel" class="carousel slide"  data-bs-ride="true">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="@/assets/lba.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="@/assets/lbb.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="@/assets/lbc.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
+     
 
   </template>
 
   <script>
   
+  import * as bootstrap from 'bootstrap'
+
   import { ref } from "vue";
   import { layer } from "vue3-layer";
 
@@ -119,6 +148,16 @@
     mounted(){
         this.navList = ['网站首页','走进八建','新闻动态','工程服务','企业文化','交流学习','联系我们'];
         window.addEventListener('scroll', this.MylistenScroll);
+
+        const myCarouselElement = document.querySelector('#myCarousel')
+        const carousel = new bootstrap.Carousel(myCarouselElement, {
+          interval: 2000,
+          wrap: true,
+          touch:true,
+
+        });
+
+    
     },
     methods: {
       MylistenScroll(){
@@ -234,7 +273,7 @@
       height: 100%;
     }
     .tpbox{
-      padding: 0 10px;
+      padding: 0 20px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -247,7 +286,7 @@
       font-size: 14px;
       font-family: "微软雅黑";
       position: relative;text-decoration: none;
-      padding-left: 5px;
+      padding-left: 10px;
     }
     .icparent:hover{
       color: #ffe2e2;

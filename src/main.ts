@@ -13,6 +13,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 // import "~bootstrap/scss/bootstrap";
 import 'bootstrap';
 
+import 'animate.css';
+
 
 const app = createApp(App);
 app.component('s3-layer', s3Layer);
