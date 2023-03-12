@@ -45,8 +45,8 @@
         
     </div>
 
-    <!-- fixed-top -->
-    <nav  class="navbar navbar-light bg-light  navbar-expand-lg" v-bind:class="{'fixed-top':isNeedFixed}" style="padding:0px;">
+    <!-- fixed-top  bg-light-->
+    <nav  class="navbar  navbar-light navbar-expand-lg" v-bind:class="{'fixed-top':isNeedFixed}" style="padding:0px;background-color: #fff;">
       <div class="container-xl">
         <a class="navbar-brand" href="#">
           <div class="my-header-img-parent">
@@ -186,7 +186,7 @@
 
 }
   </script>
-  <style>
+  <style scoped>
   .container-fluid{
     padding: 0px !important;
   }

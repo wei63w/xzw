@@ -12,11 +12,12 @@
 // @import "~bootstrap/scss/bootstrap";
 
 /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
   font-family: 'iconfont';  /* Project id 3946563 */
-  src: url('//at.alicdn.com/t/c/font_3946563_vh243gjdf3.woff2?t=1678549530272') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3946563_vh243gjdf3.woff?t=1678549530272') format('woff'),
-       url('//at.alicdn.com/t/c/font_3946563_vh243gjdf3.ttf?t=1678549530272') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3946563_vlhhucoe48.woff2?t=1678625949627') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3946563_vlhhucoe48.woff?t=1678625949627') format('woff'),
+       url('//at.alicdn.com/t/c/font_3946563_vlhhucoe48.ttf?t=1678625949627') format('truetype');
 }
 .iconfont{
     font-family:"iconfont" !important;
