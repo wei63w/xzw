@@ -92,7 +92,7 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 
-                <figure v-for="item of 3" class="text-end shadow-sm p-3  bg-body rounded mfigure">
+                <figure v-for="item of 4" class="text-end shadow-sm p-3  bg-body rounded mfigure">
                   <blockquote class="blockquote">
                     <p>喜报！河南101集团基础工程承包资质荣升一级</p>
                   </blockquote>
@@ -118,8 +118,86 @@
 
 
     <div class="container-xl">
-      <h1 v-for="item of 40">This is Main {{ item }}</h1>
-      <span> main will over</span>
+
+      
+      <div class="row card-parent">
+        <div class='col-md-4 col-sm-12 card-item'>
+          <div class='post-module'>
+            <div class='thumbnail'>
+              <img src='@/assets/demo.jpg'>
+            </div>
+            <div class='post-content'>
+              <div class='category'>企业精神</div>
+              <h1 class='title'>专注品质 敢为人先</h1>
+              <h2 class='sub_title'>使命感 文化共识 团队合作 客户至上 </h2>
+              <p class='description'>
+                企业精神重视团队合作和协作精神，为企业员工提供了一个共同的工作环境和文化氛围.
+                强调客户至上和服务优先，强调企业文化的共识和传承，为企业员工提供了一个共同的价值观念和行为准则.
+                为企业员工提供了一个共同的服务理念和行为准则.
+                鼓励员工勇于创新和突破，为企业带来新的机遇和挑战.
+              </p>
+            </div>
+          </div>
+        </div>
+		  <div class='col-md-4 col-sm-12 card-item'>
+          <div class='post-module'>
+            <div class='thumbnail'>
+              <img src='@/assets/demo.jpg'>
+            </div>
+            <div class='post-content'>
+              <div class='category'>企业格言</div>
+              <h1 class='title'>质量立业，诚信铸就未来</h1>
+              <h2 class='sub_title'>专业创造价值，服务创造未来 </h2>
+              <p class='description'>
+                注重质量和诚信，以人为本，追求卓越，严谨负责，精益求精等方面。
+                同时，它们也突出了建筑公司应该注重服务和创新，以专业创造价值，引领未来。
+              </p>
+            </div>
+          </div>
+		  </div>
+      <div class="col-md-4 col-sm-12 card-item">
+          <div class='post-module'>
+            <div class='thumbnail'>
+              <img src='@/assets/demo.jpg'>
+            </div>
+            <div class='post-content'>
+              <div class='category'>安全理念</div>
+              <h1 class='title'>以人为本、预防为主；重视综合治理！</h1>
+              <h2 class='sub_title'>安全管理，全员参与 安全到位 持续改进 共同承担 </h2>
+              <p class='description'>
+                把安全问题放在施工和工程管理的首要位置。
+                突出全员参与和责任到人的重要性，强调公司的安全管理需要全员参与和共同承担责任。
+                同时，还要强调应该持续改进安全管理，以创造美好未来。
+              </p>
+            </div>
+          </div>
+      </div>
+
+      </div>
+      
+      
+      
+      
+      
+      <div class="row d-none d-md-bloc">
+          <div id="certify ">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="@/assets/swiper/certify01.png" /><p>非常难得又值钱的认证证书</p></div>
+                <div class="swiper-slide"><img src="@/assets/swiper/certify02.png" /><p>深圳市优秀互联网企业认定证书</p></div>
+                <div class="swiper-slide"><img src="@/assets/swiper/certify03.png" /><p>质量管理体系认证荣誉证书</p></div>
+                <div class="swiper-slide"><img src="@/assets/swiper/certify04.png" /><p>计算机软件著作权登记证书</p></div>
+                <div class="swiper-slide"><img src="@/assets/swiper/certify05.png" /><p>增值电信业务经营许可证</p></div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+      </div>
+
+      <!-- <h1 v-for="item of 40">This is Main {{ item }}</h1> -->
+      <!-- <span> main will over</span> -->
     </div>
 
 
@@ -129,9 +207,14 @@
 
   <script>
 
-
+  import Swiper from 'swiper' //  ES6 导入swiper js文件
+  import 'swiper/dist/css/swiper.min.css' // ES6 导入swiper css文件
+  import '../sass/card.scss';
 
   export default {
+    components: {
+
+    },
     name: 'Main',
     props: {
       msg: String
@@ -143,8 +226,65 @@
       }
     },
     mounted(){
-   
-      
+      var modify = 0;
+      var scale = 0;
+      var translate = '';
+      var zIndex = 0;
+
+      $(function() {
+        $('.post-module').hover(function () {
+        $(this).find('.description').stop().animate({
+                height: 'toggle',
+                opacity: 'toggle'
+            }, 300);
+        });
+      });
+
+     var certifySwiper = new Swiper('#certify .swiper-container', {
+      watchSlidesProgress: true,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      loop: true,
+      loopedSlides: 5,
+      autoplay: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        //clickable :true,
+      },
+      on: {
+        progress: function(progress) {
+          for (var i = 0; i < this.slides.length; i++) {
+            var slide = this.slides.eq(i);
+            var slideProgress = this.slides[i].progress;
+            modify = 1;
+            if (Math.abs(slideProgress) > 1) {
+              modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+            }
+            translate = slideProgress * modify * 260 + 'px';
+            scale = 1 - Math.abs(slideProgress) / 5;
+            zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+            slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+            slide.css('zIndex', zIndex);
+            slide.css('opacity', 1);
+            if (Math.abs(slideProgress) > 3) {
+              slide.css('opacity', 0);
+            }
+          }
+        },
+        setTransition: function(transition) {
+          for (var i = 0; i < this.slides.length; i++) {
+            var slide = this.slides.eq(i)
+            slide.transition(transition);
+          }
+
+        }
+      }
+
+     });
     },
     methods: {
  
@@ -152,6 +292,9 @@
   }
   </script>
   <style scoped lang="scss">
+
+  
+
   .message-box{
     display: flex;
     flex-direction: row;
@@ -350,7 +493,89 @@
     &:hover{
       box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
       color: #9e1f21;
+      // background-color: #c9c1c1 !important;
     }
   }
+  
 
+
+// swiper
+
+/* CSS Document */
+body{
+	margin:0;}
+#certify {
+	position: relative;
+	width: 1200px;
+	margin: 0 auto
+}
+
+#certify .swiper-container {
+	padding-bottom: 60px;
+}
+
+#certify  .swiper-slide {
+	width: 520px;
+	height: 408px;
+	background: #fff;
+	box-shadow: 0 8px 30px #ddd;
+}
+#certify  .swiper-slide img{
+	display:block;
+}
+#certify  .swiper-slide p {
+	line-height: 98px;
+	padding-top: 0;
+	text-align: center;
+	color: #636363;
+	font-size: 1.1em;
+	margin: 0;
+}
+
+#certify .swiper-pagination {
+	width: 100%;
+	bottom: 20px;
+}
+
+#certify .swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 5px;
+	border: 3px solid #fff;
+	background-color: #d5d5d5;
+	width: 10px;
+	height: 10px;
+	opacity: 1;
+}
+
+#certify .swiper-pagination-bullets .swiper-pagination-bullet-active {
+	border: 3px solid #00aadc;
+	background-color: #fff;
+}
+
+#certify .swiper-button-prev {
+	left: -30px;
+	width: 45px;
+	height: 45px;
+	background: url(@/assets/swiper/wm_button_icon.png) no-repeat;
+	background-position: 0 0;
+	background-size: 100%;
+}
+
+#certify .swiper-button-prev:hover {
+	background-position: 0 -46px;
+	background-size: 100%
+}
+
+#certify .swiper-button-next {
+	right: -30px;
+	width: 45px;
+	height: 45px;
+	background: url(@/assets/swiper/wm_button_icon.png) no-repeat;
+	background-position: 0 -93px;
+	background-size: 100%;
+}
+
+#certify .swiper-button-next:hover {
+	background-position: 0 -139px;
+	background-size: 100%
+}
 </style>
