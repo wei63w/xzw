@@ -92,7 +92,7 @@
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 
-                <figure v-for="item of 4" class="text-end shadow-sm p-3  bg-body rounded mfigure">
+                <figure v-for="(item,index) of 4" class="text-end shadow-sm p-3  bg-body rounded mfigure" :key="index">
                   <blockquote class="blockquote">
                     <p>喜报！河南101集团基础工程承包资质荣升一级</p>
                   </blockquote>
