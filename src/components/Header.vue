@@ -64,9 +64,12 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1">
               <li v-for="(item,index) of navList" :key="index" class="nav-item">
-                <a  v-bind:class="{active:currentSelect == index ? true : false}" class="nav-link" aria-current="page" href="#">{{item}}</a>
+                <a  v-bind:class="{active:currentSelect == index ? true : false}" class="nav-link" aria-current="page" href="#">{{item.showTitle}}</a>
+                <div  class="dropdown-menue">
+                  <a v-for="(citem,cindex) of item.secondTitle" :key="cindex" :href="citem.url">{{citem.showTitle}}</a>
+                </div>
               </li>
-              <li  class="nav-item">
+              <li  class="nav-search">
                 <div class="nav-link searchdiv" aria-current="page" href="#">
                   <div @click="toSearch();" class="search-parent">
                     <i class="bi bi-search" style="font-size: 1rem;"></i>
@@ -146,7 +149,45 @@
       }
     },
     mounted(){
-        this.navList = ['网站首页','走进八建','新闻动态','工程服务','企业文化','交流学习','联系我们'];
+        // this.navList = ['网站首页','走进八建','新闻动态','工程服务','企业文化','交流学习','联系我们'];
+
+        this.navList = [
+          {showTitle:'网站首页',secondTitle:[]},
+          {showTitle:'走进八建',secondTitle:[
+            {showTitle:'集团简介',url:''},
+            {showTitle:'资质荣誉',url:''},
+            {showTitle:'企业风采',url:''},
+            {showTitle:'组织架构',url:''},
+            {showTitle:'经营网络',url:''}
+          ]},
+          {showTitle:'新闻动态',secondTitle:[
+            {showTitle:'集团新闻',url:''},
+            {showTitle:'公司动态',url:''},
+            {showTitle:'行业动态',url:''},
+            {showTitle:'视频中心',url:''},
+            {showTitle:'转发文件',url:''}
+          ]},
+          {showTitle:'工程服务',secondTitle:[
+            {showTitle:'工程案例',url:''},
+            {showTitle:'标准化管理',url:''},
+            {showTitle:'供应采购资源库',url:''},
+            {showTitle:'劳务分包资源库',url:''},
+            {showTitle:'办事指南',url:''},
+            {showTitle:'下载中心',url:''}
+          ]},
+          {showTitle:'企业文化',secondTitle:[]},
+          {showTitle:'交流学习',secondTitle:[
+            {showTitle:'学习交流',url:''},
+            {showTitle:'标准规范',url:''},
+            {showTitle:'个人才艺',url:''}
+          ]},
+          {showTitle:'联系我们',secondTitle:[
+            {showTitle:'联系我们',url:''},
+            {showTitle:'人才招聘',url:''},
+            {showTitle:'在线留言',url:''}
+          ]}
+        ];
+
         window.addEventListener('scroll', this.MylistenScroll);
 
         const myCarouselElement = document.querySelector('#myCarousel')
@@ -186,7 +227,7 @@
 
 }
   </script>
-  <style scoped>
+  <style lang="scss" scoped>
   .container-fluid{
     padding: 0px !important;
   }
@@ -200,6 +241,24 @@
       vertical-align: middle;
       border: 0;
     }
+    .nav-item .active{
+      /* background-color: red;
+      color: white !important; */
+    }
+
+    .nav-search{
+      min-height: 100px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      position: relative;
+      text-align: left;
+    }
+
     .nav-item{
       min-height: 100px;
       align-items: center;
@@ -209,26 +268,55 @@
       -moz-transition: 0.5s;
       -o-transition: 0.5s;
       transition: 0.5s;
+      position: relative;
+      text-align: left;
+      .dropdown-menue{
+        display: none;
+        position: absolute;
+        background-color: white;
+        top: 106px;
+        z-index: 9;
+        left: 0;
+        width: 150px;
+        a{
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+          color: black;
+          &:hover{
+            background-color: #999;
+            color: black;
+          }
+        }
+      }
+      &:hover{
+        .dropdown-menue{
+          display: block;
+        }
+      }
+      .nav-link{
+        height: 100%;
+        display:flex;
+        text-decoration: none;
+        line-height: 90px;
+        color: black;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        &:hover{
+          background-color: #9e1f21;
+          color: white !important;
+        }
+      }
+      
     }
-    .nav-item .active{
-      /* background-color: red;
-      color: white !important; */
-    }
-    .nav-item a:hover{
-      background-color: red;
-      color: white !important;
-    }
-    .nav-item a{
-      height: 100%;
-      display:block;
-      text-decoration: none;
-      line-height: 90px;
-      color: black;
-      -webkit-transition: 0.5s;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      transition: 0.5s;
-    }
+   
+
+
+
     .search-parent{
       height: 40px;
       width: 40px;
@@ -313,5 +401,8 @@
     .icparent > .icbox{
       display: none;
     }
+
+  
+
 
   </style>

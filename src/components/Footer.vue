@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid" style="padding: 0;background-color: rgb(247, 247, 247);">
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1440 126" style="enable-background:rgb(247, 247, 247);" xml:space="preserve">
         <path fill="#9e1f21" class="bg-red" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"></path>
       </svg>
       <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5  mfooter">
@@ -61,7 +61,7 @@
   <style scoped>
     .mfooter{
       background-color: #9e1f21;
-      color: #fff;
+      color: rgb(247, 247, 247);
       margin: 0;
     }
     .text-muted{
