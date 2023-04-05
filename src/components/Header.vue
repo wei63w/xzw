@@ -64,9 +64,9 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1">
               <li v-for="(item,index) of navList" :key="index" class="nav-item">
-                <a  v-bind:class="{active:currentSelect == index ? true : false}" class="nav-link" aria-current="page" href="#">{{item.showTitle}}</a>
+                <a  v-bind:class="{active:currentSelect == index ? true : false}" class="nav-link" aria-current="page" :href="item.url || '#'">{{item.showTitle}}</a>
                 <div  class="dropdown-menue">
-                  <a v-for="(citem,cindex) of item.secondTitle" :key="cindex" :href="citem.url">{{citem.showTitle}}</a>
+                  <a v-for="(citem,cindex) of item.secondTitle" :key="cindex" :href="`/module/${item.module}/id/${cindex}`">{{citem.showTitle}}</a>
                 </div>
               </li>
               <li  class="nav-search">
@@ -132,6 +132,8 @@
   import { ref } from "vue";
   import { layer } from "vue3-layer";
 
+  import sourceData from "@/assets/data/source.json";
+
   // const visible1 = ref(false);
 
   export default {
@@ -149,44 +151,8 @@
       }
     },
     mounted(){
-        // this.navList = ['网站首页','走进八建','新闻动态','工程服务','企业文化','交流学习','联系我们'];
 
-        this.navList = [
-          {showTitle:'网站首页',secondTitle:[]},
-          {showTitle:'走进八建',secondTitle:[
-            {showTitle:'集团简介',url:''},
-            {showTitle:'资质荣誉',url:''},
-            {showTitle:'企业风采',url:''},
-            {showTitle:'组织架构',url:''},
-            {showTitle:'经营网络',url:''}
-          ]},
-          {showTitle:'新闻动态',secondTitle:[
-            {showTitle:'集团新闻',url:''},
-            {showTitle:'公司动态',url:''},
-            {showTitle:'行业动态',url:''},
-            {showTitle:'视频中心',url:''},
-            {showTitle:'转发文件',url:''}
-          ]},
-          {showTitle:'工程服务',secondTitle:[
-            {showTitle:'工程案例',url:''},
-            {showTitle:'标准化管理',url:''},
-            {showTitle:'供应采购资源库',url:''},
-            {showTitle:'劳务分包资源库',url:''},
-            {showTitle:'办事指南',url:''},
-            {showTitle:'下载中心',url:''}
-          ]},
-          {showTitle:'企业文化',secondTitle:[]},
-          {showTitle:'交流学习',secondTitle:[
-            {showTitle:'学习交流',url:''},
-            {showTitle:'标准规范',url:''},
-            {showTitle:'个人才艺',url:''}
-          ]},
-          {showTitle:'联系我们',secondTitle:[
-            {showTitle:'联系我们',url:''},
-            {showTitle:'人才招聘',url:''},
-            {showTitle:'在线留言',url:''}
-          ]}
-        ];
+        this.navList = sourceData;
 
         window.addEventListener('scroll', this.MylistenScroll);
 
