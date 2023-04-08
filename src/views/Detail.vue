@@ -19,7 +19,24 @@
               </div>
           </div>
           <div class="content_right col-xs-12 col-sm-12 col-md-9 col-lg-9">
-              right
+              <div class="container">
+                <nav aria-label="breadcrumb" style="padding: 20px 10px 0 0;">
+                  <ol class="breadcrumb" >
+                    <li class="breadcrumb-item" v-for="(item,index) in mbx"  v-bind:class="{active:item.curr ? true : false}" v-bind:aria-current="{page:item.curr?true:false}">
+                       
+                       <a v-if="!item.curr" :href="item.url">{{item.name}} </a>
+                       <template v-else>
+                          {{ item.name }}
+                       </template>
+                      </li>
+                  </ol>
+                </nav>
+              </div>  
+
+
+            right
+
+
           </div>
 
         </div>
@@ -46,7 +63,8 @@ export default {
   data(){
     return{
       currentData:{},
-      currentID:0
+      currentID:0,
+      mbx:[]
     };
   },
   mounted(){
@@ -61,8 +79,11 @@ export default {
       }
     })
 
-
-
+    this.mbx = [
+      {name:'首页',url:'/'},
+      {name:this.currentData.showTitle,url:`/module/${moduleName}/id/0`},
+      {name:this.currentData.secondTitle[this.currentID].showTitle,url:`module/${moduleName}/id/${this.currentID}`,curr:true}
+    ]
   },
   methods: {
     
@@ -118,8 +139,13 @@ export default {
   }
 }
 .content_right{
-  border:1px solid green;
+  // border:1px solid green;
 }
 
+.breadcrumb{
+  a{
+    text-decoration: none;
+  }
+}
 
 </style>

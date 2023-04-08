@@ -48,7 +48,7 @@
     <!-- fixed-top  bg-light-->
     <nav  class="navbar  navbar-light navbar-expand-lg" v-bind:class="{'fixed-top':isNeedFixed}" style="padding:0px;background-color: #fff;">
       <div class="container-xl">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <div class="my-header-img-parent">
             <img class="my-header-img" src="@/assets/bj_logo.png" alt="">
           </div>  
@@ -65,8 +65,8 @@
             <ul class="navbar-nav justify-content-end flex-grow-1">
               <li v-for="(item,index) of navList" :key="index" class="nav-item">
                 <a  v-bind:class="{active:currentSelect == index ? true : false}" class="nav-link" aria-current="page" :href="item.url || '#'">{{item.showTitle}}</a>
-                <div  class="dropdown-menue">
-                  <a v-for="(citem,cindex) of item.secondTitle" :key="cindex" :href="`/module/${item.module}/id/${cindex}`">{{citem.showTitle}}</a>
+                <div  class="dropdown-menue ">
+                  <a class="" v-for="(citem,cindex) of item.secondTitle" :key="cindex" :href="`/module/${item.module}/id/${cindex}`">{{citem.showTitle}}</a>
                 </div>
               </li>
               <li  class="nav-search">
@@ -225,62 +225,131 @@
       text-align: left;
     }
 
-    .nav-item{
-      min-height: 100px;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      -webkit-transition: 0.5s;
-      -moz-transition: 0.5s;
-      -o-transition: 0.5s;
-      transition: 0.5s;
-      position: relative;
-      text-align: left;
-      .dropdown-menue{
-        display: none;
-        position: absolute;
-        background-color: white;
-        top: 106px;
-        z-index: 9;
-        left: 0;
-        width: 150px;
-        a{
-          display: block;
-          padding: 10px;
-          text-decoration: none;
-          font-size: 15px;
-          font-weight: 500;
-          color: black;
-          &:hover{
-            background-color: #999;
-            color: black;
+   
+      @mixin pcContent{
+        @media (min-width:992px) {
+          @content;
+        }
+      }
+      @mixin mobileContent{
+        @media(max-width:991px){
+          @content;
+        }
+      }
+     
+        @include pcContent{
+          .nav-item{
+            min-height: 100px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            position: relative;
+            text-align: left;
+            .dropdown-menue{
+              display: none;
+              position: absolute;
+              background-color: white;
+              top: 106px;
+              z-index: 9;
+              left: 0;
+              width: 150px;
+              a{
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                font-size: 15px;
+                font-weight: 500;
+                color: black;
+                &:hover{
+                  background-color: #999;
+                  color: black;
+                }
+              }
+            }
+            &:hover{
+              .dropdown-menue{
+                display: block;
+              }
+            }
+            .nav-link{
+              height: 100%;
+              display:flex;
+              text-decoration: none;
+              line-height: 90px;
+              color: black;
+              -webkit-transition: 0.5s;
+              -moz-transition: 0.5s;
+              -o-transition: 0.5s;
+              transition: 0.5s;
+              &:hover{
+                background-color: #9e1f21;
+                color: white !important;
+              }
+            }
           }
         }
-      }
-      &:hover{
-        .dropdown-menue{
-          display: block;
+        @include mobileContent{
+          .nav-item{
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            position: relative;
+            text-align: left;
+            flex-direction: column;
+            .dropdown-menue{
+              display: none;
+              position: static;
+              background-color: white;
+              top: 0;
+              z-index: 9;
+              left: 0;
+              width: 100%;
+              text-align: center;
+              a{
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                font-size: 15px;
+                font-weight: 500;
+                color: black;
+                &:hover{
+                  background-color: #999;
+                  color: black;
+                }
+              }
+            }
+            &:hover{
+              .dropdown-menue{
+                display: block;
+              }
+            }
+            .nav-link{
+              height: 100%;
+              width: 100%;
+              display: flex;
+              text-decoration: none;
+              color: black;
+              transition: 0.5s;
+              text-align: center;
+              /* align-items: center; */
+              justify-content: center;
+              &:hover{
+                background-color: #9e1f21;
+                color: white !important;
+              }
+            }
+          }
         }
-      }
-      .nav-link{
-        height: 100%;
-        display:flex;
-        text-decoration: none;
-        line-height: 90px;
-        color: black;
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -o-transition: 0.5s;
-        transition: 0.5s;
-        &:hover{
-          background-color: #9e1f21;
-          color: white !important;
-        }
-      }
-      
-    }
-   
-
+     
 
 
     .search-parent{
